@@ -1,4 +1,5 @@
-import { Text, View } from 'react-native';
+import { Text, View, Pressable, Button } from 'react-native';
+import { useCounter } from 'stores/counter.store';
 
 import { EditScreenInfo } from './EditScreenInfo';
 
@@ -9,9 +10,15 @@ type ScreenContentProps = {
 };
 
 export const ScreenContent = ({ title, path, children }: ScreenContentProps) => {
+  const { count, increase, decrease } = useCounter();
   return (
     <View className={styles.container}>
       <Text className={styles.title}>{title}</Text>
+      <View className="flex gap-5">
+        <Button title={`increase: ${count}`} onPress={increase} />
+        <Text>counter: {count}</Text>
+        <Button title={`decrease: ${count}`} onPress={decrease} />
+      </View>
       <View className={styles.separator} />
       <EditScreenInfo path={path} />
       {children}
