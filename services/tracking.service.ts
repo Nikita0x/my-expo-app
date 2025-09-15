@@ -19,7 +19,7 @@ export const trackEvent = async (
   event_name: Events | (string & {}),
   event_properties: Record<string, unknown> = {}
 ) => {
-  if (import.meta.env.VITE_MODE === 'dev')
+  if (process.env.EXPO_PUBLIC_MODE === 'dev')
     return console.log('DEV MODE! Event:', event_name, event_properties);
 
   const resultProps = {

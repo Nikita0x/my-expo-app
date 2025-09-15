@@ -5,6 +5,7 @@ import './i18n/index';
 import { ScreenContent } from 'components/ScreenContent';
 import { StatusBar } from 'expo-status-bar';
 import { Text } from 'react-native';
+import { sendMessageToTelegram } from 'services/telegram.service';
 
 export default function App() {
   return (
@@ -18,7 +19,16 @@ export default function App() {
       <Text>Helwagawglo</Text>
       <Text>Hellogawg</Text>
       <Text>Helgawglo</Text>
-      <Text>Hello</Text>
+      <Text
+        className="text-[60px]"
+        onPress={async () => {
+          await sendMessageToTelegram('contactUs', {
+            userMessage: 'test from RN',
+            email: 'nikita@gmail.com',
+          });
+        }}>
+        send message to tg contact us
+      </Text>
     </>
   );
 }
