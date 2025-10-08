@@ -58,11 +58,7 @@ _App User ID_:
  */
 
 export async function sendErrorToTelegram(errorMessage: string) {
-  const infoMessage = `
-* Premium: ${false}
-
-${errorMessage}
-`;
+  const infoMessage = `${errorMessage}`;
 
   let replyMessageId = null;
 
